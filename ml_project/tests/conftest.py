@@ -1,7 +1,5 @@
 import os
 import random
-import logging
-import sys
 
 from typing import List
 from yaml import safe_load
@@ -10,12 +8,6 @@ import numpy as np
 import pandas as pd
 import pytest
 from scipy.stats import multinomial
-
-
-# test_logger = logging.getLogger(__name__)
-# test_handler = logging.StreamHandler(sys.stdout)
-# test_logger.setLevel(logging.INFO)
-# test_logger.addHandler(test_handler)
 
 
 def make_fake_dataset(path_to_dataset: str, path_to_sample_params: str, sample_size=50) -> pd.DataFrame:
@@ -69,29 +61,18 @@ def make_fake_dataset(path_to_dataset: str, path_to_sample_params: str, sample_s
     return out_samples
 
 
-# @pytest.fixture
-# def path_to_dataset():
-#     return "data/raw/train.csv"
-#
-#
-# @pytest.fixture
-# def path_to_sample_params():
-#     return "configs/sample_params.yaml"
-
-
 @pytest.fixture
 def dataset_path():
     curdir = os.path.dirname(__file__)
-    # if not os.path.exists(os.path.join(curdir, "train_data_sample.csv")):
     df = make_fake_dataset("data/raw/train.csv", "tests/configs/sample_params.yaml")
     df.to_csv(os.path.join(curdir, "train_data_sample.csv"), index=False)
-    # test_logger.info(f"fake dataset: {df.loc[:, 'target'].values}")
     return os.path.join(curdir, "train_data_sample.csv")
 
 
 @pytest.fixture
 def target_col():
     return "target"
+
 
 @pytest.fixture
 def transform_type():

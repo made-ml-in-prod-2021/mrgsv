@@ -3,7 +3,7 @@ from typing import Tuple
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from src.data_types import SplittingParams
+from ..data_types import SplittingParams
 
 
 def read_data(path: str) -> pd.DataFrame:

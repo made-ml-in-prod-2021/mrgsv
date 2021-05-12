@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import f1_score, roc_auc_score, accuracy_score
 
-from src.data_types.train_params import TrainingParams
+from ..data_types.train_params import TrainingParams
 
 SklearnClassifierModel = Union[RandomForestClassifier, LogisticRegression]
 
