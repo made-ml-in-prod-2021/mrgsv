@@ -1,0 +1,25 @@
+input_data_path: "data/raw/train.csv"
+output_model_path: "models/model_random_forest_classifier.pkl"
+metric_path: "models/metrics_random_forest_classifier.json"
+splitting_params:
+  val_size: 0.2
+  random_state: 1234
+train_params:
+  model_type: "RandomForestClassifier"
+feature_params:
+  numerical_features:
+    - "age"
+    - "sex"
+    - "cp"
+    - "trestbps"
+    - "chol"
+    - "fbs"
+    - "restecg"
+    - "thalach"
+    - "exang"
+    - "oldpeak"
+    - "slope"
+    - "ca"
+    - "thal"
+  target_col: "target"
+  transform_type: "standard scale"
