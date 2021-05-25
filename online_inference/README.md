@@ -2,7 +2,7 @@ Docker always requires `sudo` to use this commands.
 ~~~
 docker build -t mrgsv/online_inference:v1 .
 docker run -p 8000:8000 mrgsv/online_inference:v1
-python make_request.py 
+python src/make_request.py 
 ~~~
 
 ### Самооценка:
