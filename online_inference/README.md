@@ -14,3 +14,4 @@ python src/make_request.py
 - [X] опубликуйте образ в https://hub.docker.com/, используя docker push (вам потребуется зарегистрироваться) (2 балла) [!LINK!](https://hub.docker.com/r/mrgsv/online_inference)
 - [X] напишите в readme корректные команды docker pull/run, которые должны привести к тому, что локально поднимется на inference ваша модель (1 балл)
 - [X] проведите самооценку -- 1 доп балл
+Итого: 19 баллов
