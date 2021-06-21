@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fastapi-ml-requests-limits
+  labels:
+    app: fastapi-ml
+spec:
+  containers:
+    - name: fastapi-ml
+      image: mrgsv/online_inference:v1
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "500m"
+        limits:
+          memory: "10Gi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8000
