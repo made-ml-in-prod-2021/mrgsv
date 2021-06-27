@@ -1,0 +1,57 @@
+Name:         fastapi-ml-liveness-readiness
+Namespace:    default
+Priority:     0
+Node:         gke-cluster-1-default-pool-048f0e5c-669z/10.186.0.7
+Start Time:   Mon, 21 Jun 2021 21:33:24 +0300
+Labels:       app=fastapi-ml
+Annotations:  <none>
+Status:       Running
+IP:           10.124.1.5
+IPs:
+  IP:  10.124.1.5
+Containers:
+  fastapi-ml:
+    Container ID:   containerd://430cb1676d2374fa9818e61ff5f9e1dea02bddd52465c070ba47433d18fcd89b
+    Image:          mrgsv/online_inference:v2
+    Image ID:       docker.io/mrgsv/online_inference@sha256:f79933c24d590e55f8e1d39c686e85d3b8c1a32d6527418157e9da07a8c29b48
+    Port:           8000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 21 Jun 2021 21:33:25 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  10Gi
+    Requests:
+      cpu:        500m
+      memory:     64Mi
+    Liveness:     http-get http://:8000/health delay=25s timeout=1s period=5s #success=1 #failure=3
+    Readiness:    http-get http://:8000/health delay=20s timeout=1s period=3s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-tnd7d (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-tnd7d:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-tnd7d
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  7m38s                  default-scheduler  Successfully assigned default/fastapi-ml-liveness-readiness to gke-cluster-1-default-pool-048f0e5c-669z
+  Normal   Pulled     7m37s                  kubelet            Container image "mrgsv/online_inference:v2" already present on machine
+  Normal   Created    7m37s                  kubelet            Created container fastapi-ml
+  Normal   Started    7m37s                  kubelet            Started container fastapi-ml
+  Warning  Unhealthy  7m11s (x3 over 7m17s)  kubelet            Readiness probe failed: Get "http://10.124.1.5:8000/health": dial tcp 10.124.1.5:8000: connect: connection refused
+  Warning  Unhealthy  7m11s                  kubelet            Liveness probe failed: Get "http://10.124.1.5:8000/health": dial tcp 10.124.1.5:8000: connect: connection refused
